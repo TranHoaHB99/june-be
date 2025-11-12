@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: june-be
+    plan: free
+    region: oregon
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: PGSSL
+        value: "true"
+    healthCheckPath: /health
+    runtime: docker
+    dockerContext: .
+    dockerfilePath: ./Dockerfile
